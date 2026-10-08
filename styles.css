@@ -1,0 +1,9 @@
+.round-result,
+.final-result {
+  display: none;
+}
+
+.round-result.show-result,
+.final-result.show-result {
+  display: block;
+}
