@@ -30,15 +30,19 @@ buttonElements.forEach((el) =>
   el.addEventListener('click', (event) => {
     const humanChoice = event.currentTarget.dataset.selection;
     const computerChoice = getComputerChoice();
+    round++;
     if (round <= maxRound) {
       roundElement.textContent = round;
     }
-    round++;
+
     if (round > maxRound) {
       buttonElements.forEach((el) => (el.disabled = true));
+      playRound(humanChoice, computerChoice);
+      console.log(humanScore, computerScore, '39');
       showFinalResult();
+    } else {
+      playRound(humanChoice, computerChoice);
     }
-    playRound(humanChoice, computerChoice);
   })
 );
 
@@ -117,9 +121,9 @@ function showRoundResult(humanChoice, computerChoice, textResult) {
 
 function showFinalResult() {
   if (computerScore > humanScore) {
-    finalResultElement.querySelector('p').textContent = 'You lose!';
+    finalResultElement.querySelector('p').textContent = '👎 You lose!';
   } else if (computerScore < humanScore) {
-    finalResultElement.querySelector('p').textContent = 'You Win!';
+    finalResultElement.querySelector('p').textContent = '🏆 You Win!';
   } else {
     finalResultElement.querySelector('p').textContent = 'Draw';
   }
