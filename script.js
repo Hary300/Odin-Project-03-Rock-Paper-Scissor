@@ -49,14 +49,10 @@ buttonElements.forEach((el) =>
 function playRound(humanChoice, computerChoice) {
   if (computerChoice === 'rock') {
     if (humanChoice === 'paper') {
-      showRoundResult(humanChoice, computerChoice, 'You win. Paper beats Rock');
+      showRoundResult(humanChoice, computerChoice, 'You win. 📄 beats 🪨');
       humanScore++;
     } else if (humanChoice === 'scissors') {
-      showRoundResult(
-        humanChoice,
-        computerChoice,
-        'You lose. Rock beats Scissors'
-      );
+      showRoundResult(humanChoice, computerChoice, 'You lose. 🪨 beats ✂️');
       computerScore++;
     } else {
       showRoundResult(humanChoice, computerChoice, 'Draw');
@@ -65,18 +61,10 @@ function playRound(humanChoice, computerChoice) {
 
   if (computerChoice === 'scissors') {
     if (humanChoice === 'rock') {
-      showRoundResult(
-        humanChoice,
-        computerChoice,
-        'You win. Rock beats Scissors'
-      );
+      showRoundResult(humanChoice, computerChoice, 'You win. 🪨 beats ✂️');
       humanScore++;
     } else if (humanChoice === 'paper') {
-      showRoundResult(
-        humanChoice,
-        computerChoice,
-        'You lose. Scissors beat Paper'
-      );
+      showRoundResult(humanChoice, computerChoice, 'You lose. ✂️ beat 📄');
       computerScore++;
     } else {
       showRoundResult(humanChoice, computerChoice, 'Draw');
@@ -85,18 +73,10 @@ function playRound(humanChoice, computerChoice) {
 
   if (computerChoice === 'paper') {
     if (humanChoice === 'scissors') {
-      showRoundResult(
-        humanChoice,
-        computerChoice,
-        'You win. Scissors beat Paper'
-      );
+      showRoundResult(humanChoice, computerChoice, 'You win. ✂️ beat 📄');
       humanScore++;
     } else if (humanChoice === 'rock') {
-      showRoundResult(
-        humanChoice,
-        computerChoice,
-        'You lose. Paper beats Rock'
-      );
+      showRoundResult(humanChoice, computerChoice, 'You lose. 📄 beats 🪨');
       computerScore++;
     } else {
       showRoundResult(humanChoice, computerChoice, 'Draw');
@@ -111,8 +91,13 @@ function renderScore() {
 }
 
 function showRoundResult(humanChoice, computerChoice, textResult) {
-  humanChoiceElement.textContent = humanChoice;
-  computerChoiceElement.textContent = computerChoice;
+  const icons = {
+    rock: '🪨',
+    paper: '📄',
+    scissors: '✂️',
+  };
+  humanChoiceElement.textContent = icons[humanChoice];
+  computerChoiceElement.textContent = icons[computerChoice];
   roundResultTextElement.textContent = textResult;
   roundResultTitleElement.textContent = round - 1;
 
